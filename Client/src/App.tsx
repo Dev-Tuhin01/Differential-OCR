@@ -1,7 +1,12 @@
 import "./App.css";
+import { Imageloader } from "./components/Imageloader";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Imageloader />
+    </>
+  );
 }
 
 export default App;
