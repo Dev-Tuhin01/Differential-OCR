@@ -5,8 +5,10 @@ export const Imageloader = () => {
   const [image, setImage] = useState("");
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(URL.createObjectURL(event.target.files[0]!));
-    setImage(URL.createObjectURL(event.target.files[0]));
+    // @ts-ignore: Object is possibly 'null';
+    console.log(URL.createObjectURL(event.target!.files[0]));
+    // @ts-ignore: Object is possibly 'null';
+    setImage(URL.createObjectURL(event.target!.files[0]));
   };
 
   return (
