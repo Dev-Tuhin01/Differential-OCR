@@ -4,12 +4,13 @@ import axios from "axios";
 
 export const Imageloader = () => {
   const [image, setImage] = useState<FormData | null>(null);
+  const [previewImage, setPreviewImage] = useState("");
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore: Object is possibly 'null';
     // console.log(URL.createObjectURL(event.target!.files[0]));
     // @ts-ignore: Object is possibly 'null';
-    // setImage(URL.createObjectURL(event.target!.files[0]));
+    setPreviewImage(URL.createObjectURL(event.target!.files[0]));
 
     const formData = new FormData();
 
@@ -42,7 +43,7 @@ export const Imageloader = () => {
         <input type="file" id="input Image" onChange={onImageChange} />
         <button onClick={onSubmit}>Submit</button>
       </div>
-      <img src={image && image} id="displayImage" />
+      <img src={previewImage && previewImage} id="displayImage" />
     </div>
   );
 };
