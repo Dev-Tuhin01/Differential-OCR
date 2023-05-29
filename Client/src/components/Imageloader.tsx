@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Imageloader.css";
+import axios from "axios";
 
 export const Imageloader = () => {
   const [image, setImage] = useState("");
@@ -11,12 +12,22 @@ export const Imageloader = () => {
     setImage(URL.createObjectURL(event.target!.files[0]));
   };
 
+  const onSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    console.log("Submit button clicked!");
+
+    axios.post("http://localhost:4000/image-upload", {
+      //axios post request
+      value: "Hello World!",
+    });
+  };
+
   return (
     <div id="Imageloader">
       <div id="form">
         <h2>Insert a Image</h2>
         <input type="file" id="input Image" onChange={onImageChange} />
-        <button>Submit</button>
+        <button onClick={onSubmit}>Submit</button>
       </div>
       <img src={image && image} id="displayImage" />
     </div>
