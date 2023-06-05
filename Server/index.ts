@@ -4,23 +4,26 @@ import { Response } from "express";
 import multer from "multer";
 import cors from "cors";
 import bodyParser from "body-parser";
+import path from "path";
 
 const PORT = 4000; //Port where the server will be hosted
 const app = express(); //initializing express
-
+const date = new Date();
 const imageUploadPath = "./upload"; //path where the image will be loaded
 
+let imageName = "test" + date.getTime();
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, imageUploadPath);
   },
   filename: function(req, file, cb) {
-    // cb(null, `${file.fieldname}_dateVal_${Date.now()}_${file.originalname}`);
-    cb(null, `${file.originalname}`);
+    imageName.concat(path.extname(file.originalname));
+    cb(null, `${imageName}`);
   },
 });
 
 const imageUpload = multer({ storage: storage }); //initializing multer
+console.log(imageName);
 
 //adding Cors
 const corsOrigin = "http://localhost:5173";
