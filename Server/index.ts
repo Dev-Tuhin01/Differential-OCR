@@ -88,10 +88,11 @@ app.post(
           const { text } = data;
           await worker.terminate();
 
+          console.log(text.toString());
           //perform segmentation and symbol reconiztion
-          const segmentedText = performSegmentationAndSymbolRecognition(text);
+          // const segmentedText = performSegmentationAndSymbolRecognition(text);
 
-          res.json({ text: segmentedText });
+          // res.json({ text: segmentedText });
         });
     } catch (error) {
       console.error(error);
@@ -100,11 +101,11 @@ app.post(
   }
 );
 
-function performSegmentationAndSymbolRecognition(text: string) {
-  //Regular expressions to
-  //
-  return segmentendText;
-}
+// function performSegmentationAndSymbolRecognition(text: string) {
+//   //Regular expressions to
+//   //
+//   return segmentendText;
+// }
 
 app.listen(PORT, () => {
   console.log(`app is running on port : http://localhost:${PORT}`);
